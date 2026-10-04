@@ -1,0 +1,19 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: true
+
+  Wexample\SymfonyRemotePayment\Class\FakePaymentProvider:
+    arguments:
+      $name: fake
+      $methods: [card]
+
+  Wexample\SymfonyPayment\Tests\Fixtures\Payable\TestOrderResolver: ~
+
+  Wexample\SymfonyPayment\Tests\Fixtures\Payable\EventRecorder:
+    tags:
+      - { name: kernel.event_listener, event: Wexample\SymfonyPayment\Event\PaymentSucceededEvent, method: record }
+      - { name: kernel.event_listener, event: Wexample\SymfonyPayment\Event\PaymentFailedEvent, method: record }
+      - { name: kernel.event_listener, event: Wexample\SymfonyPayment\Event\PaymentRefundedEvent, method: record }
+      - { name: kernel.event_listener, event: Wexample\SymfonyPayment\Event\PaymentCanceledEvent, method: record }

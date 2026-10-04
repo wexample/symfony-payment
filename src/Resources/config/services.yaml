@@ -1,0 +1,25 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Wexample\SymfonyPayment\:
+        resource: '../../{Class,Command,Repository,Service}'
+
+    Wexample\SymfonyPayment\Controller\:
+        resource: '../../Controller'
+        tags: ['controller.service_arguments']
+
+    Wexample\SymfonyPayment\Service\PaymentService:
+        public: true
+
+    Wexample\SymfonyPayment\Service\PaymentAccessService:
+        public: true
+        arguments:
+            $secret: '%kernel.secret%'
+
+    Wexample\SymfonyPayment\Service\PayableRegistry:
+        public: true
+        arguments:
+            $resolvers: !tagged_iterator wexample_symfony_payment.payable_resolver
