@@ -1,0 +1,1 @@
+`symfony-payment` collects money for anything payable — a cart, an invoice, a membership — through any provider of `symfony-remote-payment`, or by hand for transfers and cash. A payment's state only changes through guarded transitions, driven by provider webhooks rather than by the browser, and every change is an event the payable's package listens to.

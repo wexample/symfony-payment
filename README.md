@@ -1,14 +1,42 @@
 # symfony-payment
 
-Version: 1.0.1
+Version: 2.0.0
+
+## Paying
+
+```php
+$payment = $paymentService->getOrCreateForPayable($cart, 'card');   // reuses the open one, replaces it if the amount changed
+$initiation = $paymentService->initiate($payment);                 // client secret or redirect; null for a zero amount
+```
+
+Routes (import `src/Resources/config/routes.yaml`):
+
+- `POST /_payment/webhook/{provider}`: provider notifications, verified by the provider's `WebhookParserInterface`; replays are harmless;
+- `GET /_payment/status/{id}?token=…`: the status only, for the browser waiting on a payment page; the token comes from `PaymentAccessService::createToken()`.
+
+`confirmManualPayment()` records a received transfer or cash payment; `refund()` refunds through the provider, `recordRefund()` records one made elsewhere. `bin/console payment:in-flight` fails while payments may still be confirmed, so a deployment can wait for them.
+
+## Events
+
+`PaymentStatusChangedEvent` on every change, then `PaymentSucceededEvent` (exactly once), `PaymentFailedEvent`, `PaymentCanceledEvent`, `PaymentRefundedEvent`. A package owning payables provides a `PayableResolverInterface` so listeners get the payable back.
 
 ## Table of Contents
 
+- [Paying](#paying)
+- [Events](#events)
+- [Architecture](#architecture)
 - [Integration in the Suite](#integration-in-the-suite)
+- [Dependencies](#dependencies)
 - [Versioning & Compatibility Policy](#versioning--compatibility-policy)
 - [License](#license)
 - [About us](#about-us)
 - [Migration Notes](#migration-notes)
+
+## Architecture
+
+src/Enum/PaymentStatus.php declares the allowed transitions; src/Service/PaymentService.php is the only place that moves a payment: a forbidden transition throws, the same status is a no-op returning false (which is what makes webhooks idempotent). Providers are found in the `symfony-remote-payment` registry by method; src/Class/ManualPaymentGateway.php is one of them, for money that arrives outside any provider.
+
+The package never knows carts or invoices: a payment holds a payable type and id, and the payable's package listens to the events.
 
 ## Integration in the Suite
 
@@ -19,6 +47,13 @@ This package is part of the Wexample Suite — a collection of high-quality, mod
 The suite includes packages for configuration management, file handling, prompts, and more. Each package can be used independently or as part of the integrated suite.
 
 Visit the [Wexample Suite documentation](https://docs.wexample.com) for the complete package ecosystem.
+
+## Dependencies
+
+- php: >=8.5
+- wexample/symfony-helpers: >=13.0.0
+- wexample/symfony-money: >=5.0.0
+- wexample/symfony-remote-payment: >=2.0.0
 
 ## Versioning & Compatibility Policy
 
