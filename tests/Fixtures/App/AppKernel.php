@@ -3,6 +3,7 @@
 namespace Wexample\SymfonyPayment\Tests\Fixtures\App;
 
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
+use Wexample\SymfonyCheck\WexampleSymfonyCheckBundle;
 use Wexample\SymfonyPayment\WexampleSymfonyPaymentBundle;
 use Wexample\SymfonyRemotePayment\WexampleSymfonyRemotePaymentBundle;
 use Wexample\SymfonyTesting\Tests\Fixtures\AbstractFixtureKernel;
@@ -17,6 +18,7 @@ class AppKernel extends AbstractFixtureKernel
     protected function getExtraBundles(): iterable
     {
         return [
+            new WexampleSymfonyCheckBundle(),
             new WexampleSymfonyRemotePaymentBundle(),
             new WexampleSymfonyPaymentBundle(),
         ];

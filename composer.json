@@ -22,6 +22,7 @@
   ],
   "require": {
     "php": ">=8.5",
+    "wexample/symfony-check": ">=2.0.0",
     "wexample/symfony-helpers": ">=15.0.0",
     "wexample/symfony-money": ">=5.0.0",
     "wexample/symfony-remote-payment": ">=2.0.0"

@@ -5,7 +5,7 @@ services:
         public: false
 
     Wexample\SymfonyPayment\:
-        resource: '../../{Class,Command,Repository,Service}'
+        resource: '../../{Checker,Class,Command,Repository,Service}'
 
     Wexample\SymfonyPayment\Controller\:
         resource: '../../Controller'
