@@ -1,6 +1,6 @@
 # symfony-payment
 
-Version: 3.0.0
+Version: 3.0.1
 
 ## Paying
 
@@ -51,7 +51,7 @@ Visit the [Wexample Suite documentation](https://docs.wexample.com) for the comp
 ## Dependencies
 
 - php: >=8.5
-- wexample/symfony-check: >=2.0.0
+- wexample/symfony-check: >=3.0.0
 - wexample/symfony-helpers: >=15.0.0
 - wexample/symfony-money: >=5.0.0
 - wexample/symfony-remote-payment: >=2.0.0
