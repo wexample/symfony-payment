@@ -10,7 +10,7 @@ Routes (import `src/Resources/config/routes.yaml`):
 - `POST /_payment/webhook/{provider}`: provider notifications, verified by the provider's `WebhookParserInterface`; replays are harmless;
 - `GET /_payment/status/{id}?token=…`: the status only, for the browser waiting on a payment page; the token comes from `PaymentAccessService::createToken()`.
 
-`confirmManualPayment()` records a received transfer or cash payment; `refund()` refunds through the provider, `recordRefund()` records one made elsewhere. While payments may still be confirmed by a provider, `bin/console check:run deployment` (symfony-check) fails, so a deployment can wait for them.
+`confirmManualPayment()` records a received transfer or cash payment; `refund()` refunds through the provider, `recordRefund()` records one made elsewhere. While payments may still be confirmed by a provider, `bin/console check:run shutdown` (symfony-check) fails, so whoever stops the application — a release, a maintenance — can wait for them.
 
 ## Events
 

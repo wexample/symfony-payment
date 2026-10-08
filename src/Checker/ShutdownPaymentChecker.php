@@ -2,19 +2,19 @@
 
 namespace Wexample\SymfonyPayment\Checker;
 
-use Wexample\SymfonyCheck\Class\Deployment;
 use Wexample\SymfonyCheck\Class\Finding;
+use Wexample\SymfonyCheck\Class\Shutdown;
 use Wexample\SymfonyCheck\Interface\CheckerInterface;
 use Wexample\SymfonyPayment\Repository\PaymentRepository;
 
 /**
- * Holds a release back while payments may still be confirmed by a provider:
- * pending or processing, and touched within the last half hour. Stopping
- * the application then would leave a webhook unanswered.
+ * Holds the application up while payments may still be confirmed by a
+ * provider: pending or processing, and touched within the last half hour.
+ * Stopping it then would leave a webhook unanswered.
  */
-class DeploymentPaymentChecker implements CheckerInterface
+class ShutdownPaymentChecker implements CheckerInterface
 {
-    public const string CODE = 'deployment.payments_in_flight';
+    public const string CODE = 'shutdown.locked.payments_in_flight';
 
     public const int MINUTES = 30;
 
@@ -25,7 +25,7 @@ class DeploymentPaymentChecker implements CheckerInterface
 
     public function supports(object $subject): bool
     {
-        return $subject instanceof Deployment;
+        return $subject instanceof Shutdown;
     }
 
     public function check(object $subject): iterable

@@ -2,9 +2,9 @@
 
 namespace Wexample\SymfonyPayment\Tests\Integration;
 
-use Wexample\SymfonyCheck\Class\Deployment;
+use Wexample\SymfonyCheck\Class\Shutdown;
 use Wexample\SymfonyCheck\Service\CheckService;
-use Wexample\SymfonyPayment\Checker\DeploymentPaymentChecker;
+use Wexample\SymfonyPayment\Checker\ShutdownPaymentChecker;
 use Wexample\SymfonyPayment\Enum\PaymentStatus;
 use Wexample\SymfonyPayment\Event\PaymentFailedEvent;
 use Wexample\SymfonyPayment\Event\PaymentRefundedEvent;
@@ -139,7 +139,7 @@ class PaymentServiceTest extends AbstractPaymentTestCase
         $service->initiate($payment);
 
         $this->assertSame(1, static::getContainer()->get(PaymentRepository::class)->countInFlight());
-        $this->assertTrue(static::getContainer()->get(CheckService::class)->check(new Deployment())->has(DeploymentPaymentChecker::CODE));
+        $this->assertTrue(static::getContainer()->get(CheckService::class)->check(new Shutdown())->has(ShutdownPaymentChecker::CODE));
         $this->assertSame($order, static::getContainer()->get(PayableRegistry::class)->resolve($payment));
     }
 }

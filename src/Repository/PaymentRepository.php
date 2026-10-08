@@ -52,7 +52,7 @@ class PaymentRepository extends AbstractRepository
 
     /**
      * Payments a provider may still confirm: pending or processing, updated recently.
-     * A deployment should wait for them (webhooks would hit a stopped app).
+     * Stopping the application should wait for them (webhooks would hit a stopped app).
      */
     public function countInFlight(int $minutes = 30): int
     {
