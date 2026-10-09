@@ -1,0 +1,105 @@
+items:
+  - name: PaymentRefund
+    type: class
+    properties:
+      - name: id
+        type: Symfony\Component\Uid\Uuid
+      - name: payment
+        type: Payment
+      - name: amount
+        type: int
+      - name: providerReference
+        type: string
+        nullable: true
+        default: null
+      - name: reason
+        type: string
+        nullable: true
+        default: null
+      - name: dateCreated
+        type: DateTimeImmutable
+    methods:
+      - type: method
+        name: buildEntityPath
+        parameters:
+          - type: string
+            name: className
+        return:
+          type: string
+      - type: method
+        name: getEntityKeyName
+        return:
+          type: string
+      - type: method
+        name: getEntityShortName
+        return:
+          type: string
+      - type: method
+        name: getId
+        return:
+          type: Symfony\Component\Uid\Uuid
+      - type: method
+        name: setId
+        parameters:
+          - type: Symfony\Component\Uid\Uuid
+            name: id
+        return:
+          type: void
+      - type: method
+        name: getTableizedName
+        return:
+          type: string
+      - type: method
+        name: getCamelName
+        return:
+          type: string
+      - type: method
+        name: __construct
+      - type: method
+        name: getPayment
+        return:
+          type: Payment
+      - type: method
+        name: setPayment
+        parameters:
+          - type: Payment
+            name: payment
+        return:
+          type: static
+      - type: method
+        name: getAmount
+        return:
+          type: int
+      - type: method
+        name: setAmount
+        parameters:
+          - type: int
+            name: amount
+        return:
+          type: static
+      - type: method
+        name: getProviderReference
+        return:
+          type: string
+      - type: method
+        name: setProviderReference
+        parameters:
+          - type: string
+            name: providerReference
+        return:
+          type: static
+      - type: method
+        name: getReason
+        return:
+          type: string
+      - type: method
+        name: setReason
+        parameters:
+          - type: string
+            name: reason
+        return:
+          type: static
+      - type: method
+        name: getDateCreated
+        return:
+          type: DateTimeImmutable

@@ -1,0 +1,326 @@
+items:
+  - name: Payment
+    type: class
+    description: "One attempt to collect an amount for a payable, through one provider.\nThe status is only changed by PaymentService (see PaymentStatus for the allowed\ntransitions); setters here are for the service, not for controllers."
+    properties:
+      - name: currencyCode
+        type: string
+        default: EUR
+      - name: id
+        type: Symfony\Component\Uid\Uuid
+      - name: amount
+        type: int
+      - name: amountRefunded
+        type: int
+        default: 0
+      - name: status
+        type: PaymentStatus
+        default: null
+      - name: method
+        type: string
+      - name: provider
+        type: string
+        nullable: true
+        default: null
+      - name: providerReference
+        type: string
+        nullable: true
+        default: null
+      - name: providerChargeReference
+        type: string
+        nullable: true
+        default: null
+      - name: clientSecret
+        type: string
+        nullable: true
+        default: null
+      - name: payableType
+        type: string
+        nullable: true
+        default: null
+      - name: payableId
+        type: string
+        nullable: true
+        default: null
+      - name: description
+        type: string
+        nullable: true
+        default: null
+      - name: customerEmail
+        type: string
+        nullable: true
+        default: null
+      - name: ownerReference
+        type: string
+        nullable: true
+        default: null
+      - name: dateCreated
+        type: DateTimeImmutable
+      - name: dateUpdated
+        type: DateTimeImmutable
+      - name: datePaid
+        type: DateTimeImmutable
+        nullable: true
+        default: null
+      - name: failureMessage
+        type: string
+        nullable: true
+        default: null
+      - name: metadata
+        type: array
+        default: {  }
+      - name: refunds
+        type: Collection
+        description: PaymentRefund>
+    methods:
+      - type: method
+        name: getCurrencyCode
+        return:
+          type: string
+      - type: method
+        name: setCurrencyCode
+        parameters:
+          - type: string
+            name: currencyCode
+        return:
+          type: static
+      - type: method
+        name: buildEntityPath
+        parameters:
+          - type: string
+            name: className
+        return:
+          type: string
+      - type: method
+        name: getEntityKeyName
+        return:
+          type: string
+      - type: method
+        name: getEntityShortName
+        return:
+          type: string
+      - type: method
+        name: getId
+        return:
+          type: Symfony\Component\Uid\Uuid
+      - type: method
+        name: setId
+        parameters:
+          - type: Symfony\Component\Uid\Uuid
+            name: id
+        return:
+          type: void
+      - type: method
+        name: getTableizedName
+        return:
+          type: string
+      - type: method
+        name: getCamelName
+        return:
+          type: string
+      - type: method
+        name: __construct
+      - type: method
+        name: getAmount
+        return:
+          type: int
+      - type: method
+        name: setAmount
+        parameters:
+          - type: int
+            name: amount
+        return:
+          type: static
+      - type: method
+        name: getAmountRefunded
+        return:
+          type: int
+      - type: method
+        name: setAmountRefunded
+        parameters:
+          - type: int
+            name: amountRefunded
+        return:
+          type: static
+      - type: method
+        name: getAmountKept
+        return:
+          type: int
+      - type: method
+        name: getStatus
+        return:
+          type: PaymentStatus
+      - type: method
+        name: setStatus
+        description: ''
+        parameters:
+          - type: PaymentStatus
+            name: status
+        return:
+          type: static
+      - type: method
+        name: getMethod
+        return:
+          type: string
+      - type: method
+        name: setMethod
+        parameters:
+          - type: string
+            name: method
+        return:
+          type: static
+      - type: method
+        name: getProvider
+        return:
+          type: string
+      - type: method
+        name: setProvider
+        parameters:
+          - type: string
+            name: provider
+        return:
+          type: static
+      - type: method
+        name: getProviderReference
+        return:
+          type: string
+      - type: method
+        name: setProviderReference
+        parameters:
+          - type: string
+            name: providerReference
+        return:
+          type: static
+      - type: method
+        name: getProviderChargeReference
+        return:
+          type: string
+      - type: method
+        name: setProviderChargeReference
+        parameters:
+          - type: string
+            name: providerChargeReference
+        return:
+          type: static
+      - type: method
+        name: getClientSecret
+        return:
+          type: string
+      - type: method
+        name: setClientSecret
+        parameters:
+          - type: string
+            name: clientSecret
+        return:
+          type: static
+      - type: method
+        name: getPayableType
+        return:
+          type: string
+      - type: method
+        name: getPayableId
+        return:
+          type: string
+      - type: method
+        name: setPayable
+        parameters:
+          - type: string
+            name: payableType
+          - type: string
+            name: payableId
+        return:
+          type: static
+      - type: method
+        name: getDescription
+        return:
+          type: string
+      - type: method
+        name: setDescription
+        parameters:
+          - type: string
+            name: description
+        return:
+          type: static
+      - type: method
+        name: getCustomerEmail
+        return:
+          type: string
+      - type: method
+        name: setCustomerEmail
+        parameters:
+          - type: string
+            name: customerEmail
+        return:
+          type: static
+      - type: method
+        name: getOwnerReference
+        return:
+          type: string
+      - type: method
+        name: setOwnerReference
+        parameters:
+          - type: string
+            name: ownerReference
+        return:
+          type: static
+      - type: method
+        name: getDateCreated
+        return:
+          type: DateTimeImmutable
+      - type: method
+        name: setDateCreated
+        parameters:
+          - type: DateTimeImmutable
+            name: dateCreated
+        return:
+          type: static
+      - type: method
+        name: getDateUpdated
+        return:
+          type: DateTimeImmutable
+      - type: method
+        name: getDatePaid
+        return:
+          type: DateTimeImmutable
+      - type: method
+        name: setDatePaid
+        parameters:
+          - type: DateTimeImmutable
+            name: datePaid
+        return:
+          type: static
+      - type: method
+        name: getFailureMessage
+        return:
+          type: string
+      - type: method
+        name: setFailureMessage
+        parameters:
+          - type: string
+            name: failureMessage
+        return:
+          type: static
+      - type: method
+        name: getMetadata
+        return:
+          type: array
+      - type: method
+        name: setMetadata
+        parameters:
+          - type: array
+            name: metadata
+        return:
+          type: static
+      - type: method
+        name: getRefunds
+        description: ''
+        return:
+          type: Collection
+          description: PaymentRefund>
+      - type: method
+        name: addRefund
+        parameters:
+          - type: PaymentRefund
+            name: refund
+        return:
+          type: static
