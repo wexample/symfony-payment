@@ -1,3 +1,8 @@
 wexample_symfony_payment:
     resource: '../../Controller/'
     type: attribute
+
+# The lists of the payments and their refunds, each the `list` of its entity.
+wexample_symfony_payment_api:
+    resource: '../../Api/Controller/'
+    type: attribute

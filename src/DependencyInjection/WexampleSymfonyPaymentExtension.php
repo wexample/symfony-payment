@@ -14,6 +14,10 @@ class WexampleSymfonyPaymentExtension extends AbstractWexampleSymfonyExtension
         array $configs,
         ContainerBuilder $container
     ): void {
+        $config = $this->processConfiguration(new Configuration(), $configs);
+
+        $container->setParameter('wexample_symfony_payment.administration.role', $config['administration']['role']);
+
         $container
             ->registerForAutoconfiguration(PayableResolverInterface::class)
             ->addTag(self::TAG_PAYABLE_RESOLVER);

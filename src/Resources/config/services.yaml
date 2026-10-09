@@ -11,6 +11,13 @@ services:
         resource: '../../Controller'
         tags: ['controller.service_arguments']
 
+    Wexample\SymfonyPayment\Api\Normalizer\:
+        resource: '../../Api/Normalizer'
+
+    Wexample\SymfonyPayment\Api\Controller\:
+        resource: '../../Api/Controller'
+        tags: ['controller.service_arguments']
+
     Wexample\SymfonyPayment\Service\PaymentService:
         public: true
 

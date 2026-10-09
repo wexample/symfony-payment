@@ -5,8 +5,10 @@ namespace Wexample\SymfonyPayment\Entity;
 use DateTimeImmutable;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Wexample\Pseudocode\Attribute\PseudocodeExport;
 use Wexample\SymfonyHelpers\Entity\AbstractEntity;
 
+#[PseudocodeExport(inherited: true)]
 #[ORM\Entity]
 #[ORM\Table(name: 'payment_refund')]
 class PaymentRefund extends AbstractEntity

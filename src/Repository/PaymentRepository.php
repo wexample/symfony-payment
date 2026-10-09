@@ -3,6 +3,7 @@
 namespace Wexample\SymfonyPayment\Repository;
 
 use DateTimeImmutable;
+use Doctrine\ORM\QueryBuilder;
 use Wexample\SymfonyHelpers\Repository\AbstractRepository;
 use Wexample\SymfonyPayment\Entity\Payment;
 use Wexample\SymfonyPayment\Enum\PaymentStatus;
@@ -64,5 +65,42 @@ class PaymentRepository extends AbstractRepository
             ->setParameter('since', new DateTimeImmutable('-'.$minutes.' minutes'))
             ->getQuery()
             ->getSingleScalarResult();
+    }
+
+    /**
+     * The payments a list shows, newest first unless sorted otherwise: of one
+     * owner, or of everybody; in some statuses, through one provider, or
+     * holding some words in what describes them.
+     *
+     * @param list<string> $statuses
+     */
+    public function queryForList(
+        ?string $ownerReference = null,
+        array $statuses = [],
+        ?string $provider = null,
+        ?string $search = null,
+    ): QueryBuilder {
+        $builder = $this->createQueryBuilder('p')
+            ->orderBy('p.dateCreated', self::SORT_DESC);
+
+        if (null !== $ownerReference) {
+            $builder->andWhere('p.ownerReference = :owner')->setParameter('owner', $ownerReference);
+        }
+
+        if ($statuses) {
+            $builder->andWhere('p.status IN (:statuses)')->setParameter('statuses', $statuses);
+        }
+
+        if ($provider) {
+            $builder->andWhere('p.provider = :provider')->setParameter('provider', $provider);
+        }
+
+        if ($search) {
+            $builder
+                ->andWhere('LOWER(p.description) LIKE :search OR LOWER(p.customerEmail) LIKE :search OR LOWER(p.providerReference) LIKE :search')
+                ->setParameter('search', '%'.mb_strtolower($search).'%');
+        }
+
+        return $builder;
     }
 }

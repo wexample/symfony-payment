@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Wexample\Pseudocode\Attribute\PseudocodeExport;
 use Wexample\SymfonyHelpers\Entity\AbstractEntity;
 use Wexample\SymfonyMoney\Entity\Traits\HasPriceCurrencyTrait;
 use Wexample\SymfonyPayment\Enum\PaymentStatus;
@@ -18,6 +19,7 @@ use Wexample\SymfonyPayment\Repository\PaymentRepository;
  * The status is only changed by PaymentService (see PaymentStatus for the allowed
  * transitions); setters here are for the service, not for controllers.
  */
+#[PseudocodeExport(inherited: true)]
 #[ORM\Entity(repositoryClass: PaymentRepository::class)]
 #[ORM\Table(name: 'payment')]
 #[ORM\Index(columns: ['payable_type', 'payable_id'])]
