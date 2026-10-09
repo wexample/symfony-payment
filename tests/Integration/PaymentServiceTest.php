@@ -141,5 +141,7 @@ class PaymentServiceTest extends AbstractPaymentTestCase
         $this->assertSame(1, static::getContainer()->get(PaymentRepository::class)->countInFlight());
         $this->assertTrue(static::getContainer()->get(CheckService::class)->check(new Shutdown())->has(ShutdownPaymentChecker::CODE));
         $this->assertSame($order, static::getContainer()->get(PayableRegistry::class)->resolve($payment));
+        $this->assertSame($order, static::getContainer()->get(PayableRegistry::class)->find(TestOrder::getPayableType(), 'o9'));
+        $this->assertNull(static::getContainer()->get(PayableRegistry::class)->find('unknown', 'o9'));
     }
 }

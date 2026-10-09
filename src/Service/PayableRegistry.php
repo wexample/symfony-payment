@@ -28,9 +28,19 @@ class PayableRegistry
             return null;
         }
 
+        return $this->find($type, $id);
+    }
+
+    /**
+     * A payable by its type and id — what a page offering to pay it is given.
+     */
+    public function find(
+        string $payableType,
+        string $payableId
+    ): ?PayableInterface {
         foreach ($this->resolvers as $resolver) {
-            if ($resolver->supports($type)) {
-                return $resolver->resolve($type, $id);
+            if ($resolver->supports($payableType)) {
+                return $resolver->resolve($payableType, $payableId);
             }
         }
 
