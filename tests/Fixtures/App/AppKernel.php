@@ -4,6 +4,7 @@ namespace Wexample\SymfonyPayment\Tests\Fixtures\App;
 
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 use Wexample\SymfonyCheck\WexampleSymfonyCheckBundle;
+use Wexample\SymfonyMedia\WexampleSymfonyMediaBundle;
 use Wexample\SymfonyPayment\WexampleSymfonyPaymentBundle;
 use Wexample\SymfonyRemotePayment\WexampleSymfonyRemotePaymentBundle;
 use Wexample\SymfonyTesting\Tests\Fixtures\AbstractFixtureKernel;
@@ -20,6 +21,7 @@ class AppKernel extends AbstractFixtureKernel
         return [
             new WexampleSymfonyCheckBundle(),
             new WexampleSymfonyRemotePaymentBundle(),
+            new WexampleSymfonyMediaBundle(),
             new WexampleSymfonyPaymentBundle(),
         ];
     }

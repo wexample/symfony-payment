@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1980aa6d5ab5421debac94a652751c89",
+    "content-hash": "0358a2d9f668deaeaf722f7425e7b7a8",
     "packages": [
         {
             "name": "dflydev/dot-access-data",
@@ -2915,6 +2915,89 @@
             "time": "2019-03-08T08:55:37+00:00"
         },
         {
+            "name": "rinvex/countries",
+            "version": "v8.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rinvex/countries.git",
+                "reference": "b012697307453e7d9d2df25bd385904b3e2e9baf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rinvex/countries/zipball/b012697307453e7d9d2df25bd385904b3e2e9baf",
+                "reference": "b012697307453e7d9d2df25bd385904b3e2e9baf",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.0.0"
+            },
+            "require-dev": {
+                "codedungeon/phpunit-result-printer": "^0.31.0",
+                "phpunit/phpunit": "^9.5.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Rinvex\\Country\\Providers\\CountryServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Rinvex\\Country\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rinvex LLC",
+                    "email": "help@rinvex.com",
+                    "homepage": "https://rinvex.com"
+                },
+                {
+                    "name": "Abdelrahman Omran",
+                    "email": "me@omranic.com",
+                    "homepage": "https://omranic.com",
+                    "role": "Project Lead"
+                },
+                {
+                    "name": "The Generous PHP Community",
+                    "homepage": "https://github.com/rinvex/countries/contributors"
+                }
+            ],
+            "description": "Rinvex Countries is a simple and lightweight package for retrieving country details with flexibility. A whole bunch of data including name, demonym, capital, iso codes, dialling codes, geo data, currencies, flags, emoji, and other attributes for all 250 countries worldwide at your fingertips.",
+            "homepage": "https://rinvex.com",
+            "keywords": [
+                "Flexible",
+                "Simple",
+                "countries",
+                "country",
+                "currencies",
+                "demonym",
+                "dialling",
+                "emoji",
+                "flags",
+                "geographic",
+                "languages",
+                "rinvex",
+                "svg"
+            ],
+            "support": {
+                "docs": "https://github.com/rinvex/countries/blob/master/README.md",
+                "email": "help@rinvex.com",
+                "issues": "https://github.com/rinvex/countries/issues",
+                "source": "https://github.com/rinvex/countries"
+            },
+            "time": "2022-12-29T20:30:43+00:00"
+        },
+        {
             "name": "symfony/asset",
             "version": "v8.1.0",
             "source": {
@@ -3492,6 +3575,75 @@
                 }
             ],
             "time": "2026-09-18T15:55:00+00:00"
+        },
+        {
+            "name": "symfony/css-selector",
+            "version": "v8.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/css-selector.git",
+                "reference": "08e2905152a39cf3fd1745d83f8c483e258887d9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/08e2905152a39cf3fd1745d83f8c483e258887d9",
+                "reference": "08e2905152a39cf3fd1745d83f8c483e258887d9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.4.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\CssSelector\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Jean-François Simon",
+                    "email": "jeanfrancois.simon@sensiolabs.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Converts CSS selectors to XPath expressions",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/css-selector/tree/v8.1.6"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2026-08-23T10:06:25+00:00"
         },
         {
             "name": "symfony/dependency-injection",
@@ -4746,6 +4898,92 @@
             "time": "2026-08-21T17:47:34+00:00"
         },
         {
+            "name": "symfony/mime",
+            "version": "v8.1.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/mime.git",
+                "reference": "773ac57f20e2795bdadb65b5b1b5f4850d498283"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/mime/zipball/773ac57f20e2795bdadb65b5b1b5f4850d498283",
+                "reference": "773ac57f20e2795bdadb65b5b1b5f4850d498283",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.4.1",
+                "symfony/polyfill-intl-idn": "^1.10",
+                "symfony/polyfill-mbstring": "^1.0"
+            },
+            "conflict": {
+                "egulias/email-validator": "~3.0.0",
+                "phpdocumentor/reflection-docblock": "<5.2|>=7",
+                "phpdocumentor/type-resolver": "<1.5.1"
+            },
+            "require-dev": {
+                "egulias/email-validator": "^2.1.10|^3.1|^4",
+                "league/html-to-markdown": "^5.0",
+                "phpdocumentor/reflection-docblock": "^5.2|^6.0",
+                "symfony/dependency-injection": "^7.4|^8.0",
+                "symfony/process": "^7.4|^8.0",
+                "symfony/property-access": "^7.4|^8.0",
+                "symfony/property-info": "^7.4|^8.0",
+                "symfony/serializer": "^7.4.17|^8.1.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Mime\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Allows manipulating MIME messages",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "mime",
+                "mime-type"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/mime/tree/v8.1.7"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2026-09-04T11:02:17+00:00"
+        },
+        {
             "name": "symfony/options-resolver",
             "version": "v8.1.0",
             "source": {
@@ -5228,6 +5466,93 @@
                 }
             ],
             "time": "2026-09-25T15:46:47+00:00"
+        },
+        {
+            "name": "symfony/polyfill-intl-idn",
+            "version": "v1.43.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-intl-idn.git",
+                "reference": "533d68cf99c8f8ee2e8893c59ed59192e92cfd74"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/533d68cf99c8f8ee2e8893c59ed59192e92cfd74",
+                "reference": "533d68cf99c8f8ee2e8893c59ed59192e92cfd74",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "symfony/polyfill-intl-normalizer": "^1.10"
+            },
+            "suggest": {
+                "ext-intl": "For best performance"
+            },
+            "type": "library",
+            "extra": {
+                "thanks": {
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Intl\\Idn\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Laurent Bassin",
+                    "email": "laurent@bassin.info"
+                },
+                {
+                    "name": "Trevor Rowbotham",
+                    "email": "trevor.rowbotham@pm.me"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for intl's idn_to_ascii and idn_to_utf8 functions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "idn",
+                "intl",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-intl-idn/tree/v1.43.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2026-09-23T14:40:04+00:00"
         },
         {
             "name": "symfony/polyfill-intl-normalizer",
@@ -5808,20 +6133,20 @@
         },
         {
             "name": "symfony/process",
-            "version": "v8.1.7",
+            "version": "v7.4.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "10823b09358e690df4ff943e24e8492bb1019fc3"
+                "reference": "ed0ae095b86994d370d5791612e55984f15aa30e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/10823b09358e690df4ff943e24e8492bb1019fc3",
-                "reference": "10823b09358e690df4ff943e24e8492bb1019fc3",
+                "url": "https://api.github.com/repos/symfony/process/zipball/ed0ae095b86994d370d5791612e55984f15aa30e",
+                "reference": "ed0ae095b86994d370d5791612e55984f15aa30e",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.4.1"
+                "php": ">=8.2"
             },
             "type": "library",
             "autoload": {
@@ -5849,7 +6174,7 @@
             "description": "Executes commands in sub-processes",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/process/tree/v8.1.7"
+                "source": "https://github.com/symfony/process/tree/v7.4.19"
             },
             "funding": [
                 {
@@ -5869,7 +6194,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-09-02T12:40:29+00:00"
+            "time": "2026-09-02T12:38:34+00:00"
         },
         {
             "name": "symfony/property-access",
@@ -8061,7 +8386,7 @@
             "dist": {
                 "type": "path",
                 "url": "../php-api",
-                "reference": "e20b9714b6ac4402ee68a4b2b161f4601dad86f9"
+                "reference": "a4748029e501f96c0883f2b33af0895819529a26"
             },
             "require": {
                 "guzzlehttp/guzzle": "^7.8",
@@ -8102,7 +8427,7 @@
             "dist": {
                 "type": "path",
                 "url": "../php-api-entity",
-                "reference": "7aaa3ca386dc1e12e0228f8d8bbf36654e81a6d4"
+                "reference": "fa6624af011886c4db3d897607a6e1fc0f428f39"
             },
             "require": {
                 "php": ">=8.5",
@@ -8144,7 +8469,7 @@
             "dist": {
                 "type": "path",
                 "url": "../php-date",
-                "reference": "43aa81b30a6d8498a6fa4cca4f6a31f841576118"
+                "reference": "3147a2f114e7fbee3c1fe750b0b8c484b8166baa"
             },
             "require": {
                 "ext-intl": "*",
@@ -8185,7 +8510,7 @@
             "dist": {
                 "type": "path",
                 "url": "../php-file",
-                "reference": "4c010438973ef8d810dd675f65a4de80644ac12d"
+                "reference": "21fdd8a49e8ab34ece35b404c4c314eeeb0dcc40"
             },
             "require": {
                 "php": ">=8.5"
@@ -8225,7 +8550,7 @@
             "dist": {
                 "type": "path",
                 "url": "../php-helpers",
-                "reference": "ebd67acb6c496d80a8186a807d3841e3a950b322"
+                "reference": "e2e03b78e21239e96b21c09147b0921b250c9b55"
             },
             "require": {
                 "php": ">=8.5",
@@ -8261,7 +8586,7 @@
             "dist": {
                 "type": "path",
                 "url": "../php-html",
-                "reference": "c7577aca9c6653a9215f74f77b1865ba4803cac8"
+                "reference": "53ac219253eb22bc06deb209600f012c41b7169d"
             },
             "require": {
                 "php": ">=8.5",
@@ -8302,7 +8627,7 @@
             "dist": {
                 "type": "path",
                 "url": "../php-pseudocode",
-                "reference": "19ae680508e66bd14fdd41f5ccb695d61a2a1cc9"
+                "reference": "116a3e7c3874492e0cac6df42e5ec2837e1582cd"
             },
             "require": {
                 "nikic/php-parser": "^5.0",
@@ -8345,7 +8670,7 @@
             "dist": {
                 "type": "path",
                 "url": "../php-remote",
-                "reference": "32375ee3193953e800363461d4d82443ddf61f1e"
+                "reference": "54b9ac2e550a398cd1019125b733914f458df902"
             },
             "require": {
                 "guzzlehttp/guzzle": "^7.8",
@@ -8387,7 +8712,7 @@
             "dist": {
                 "type": "path",
                 "url": "../php-yaml",
-                "reference": "bb41cc9d200e8c0c71e51cfede6fd5bda04d8eb9"
+                "reference": "9eedc4956ca9ed86eab457224c79091b10c530dc"
             },
             "require": {
                 "php": ">=8.5",
@@ -8423,7 +8748,7 @@
             "dist": {
                 "type": "path",
                 "url": "../symfony-api",
-                "reference": "6766bc7c648152ec60bce52baf08265311025b64"
+                "reference": "e92484cabec4b136a9372c4b06ae65dd209fe5e0"
             },
             "require": {
                 "doctrine/orm": "^3.0",
@@ -8498,10 +8823,12 @@
             "dist": {
                 "type": "path",
                 "url": "../symfony-check",
-                "reference": "8839d8fc7713efe20458cbe39d851e9ec3391770"
+                "reference": "82f9ab3123b643555c7d8b88f73a054d34bc468d"
             },
             "require": {
                 "php": ">=8.5",
+                "symfony/http-kernel": "^7.4 || ^8.0",
+                "symfony/property-access": "^7.4 || ^8.0",
                 "wexample/symfony-helpers": ">=15.0.0"
             },
             "require-dev": {
@@ -8545,7 +8872,7 @@
             "dist": {
                 "type": "path",
                 "url": "../symfony-content",
-                "reference": "6f4a7e06cfb7da50c5f3a2ce810388f9cdb666ed"
+                "reference": "c329ae18288eaedb3604ff1035b475996c61009f"
             },
             "require": {
                 "php": ">=8.5",
@@ -8591,7 +8918,7 @@
             "dist": {
                 "type": "path",
                 "url": "../symfony-design-system",
-                "reference": "b45ac8144c57a4d2793632fb86c63fb71cb52247"
+                "reference": "354dbc5e44c890f993495432130ef6e0c7c70341"
             },
             "require": {
                 "php": ">=8.5",
@@ -8638,16 +8965,12 @@
             "dist": {
                 "type": "path",
                 "url": "../symfony-dev",
-                "reference": "f1addec91449078063b80d8a2ab69837b722d57c"
+                "reference": "45c095f7cb9b338a5c740673b11f7fd7e513cf65"
             },
             "require": {
                 "php": ">=8.5",
                 "wexample/symfony-helpers": ">=15.0.0",
                 "wexample/symfony-testing": ">=6.0.0"
-            },
-            "require-dev": {
-                "phpstan/phpdoc-parser": "1.25.0",
-                "rector/rector": "0.12.28"
             },
             "type": "library",
             "extra": {
@@ -8684,13 +9007,15 @@
             "dist": {
                 "type": "path",
                 "url": "../symfony-forms",
-                "reference": "bbe855c3afa30191350963ab74dfa833867d9f60"
+                "reference": "50d1db4e41a638fcaf3f80fbce446fbc801c8ae1"
             },
             "require": {
                 "doctrine/orm": "^3.0",
                 "php": ">=8.5",
+                "symfony/doctrine-bridge": "^7.4 || ^8.0",
                 "symfony/form": "^7.4 || ^8.0",
                 "syrtis/php-semantic-schema-web": ">=0.0.19",
+                "wexample/symfony-check": ">=3.0.0",
                 "wexample/symfony-design-system": ">=32.0.0"
             },
             "require-dev": {
@@ -8732,12 +9057,62 @@
             }
         },
         {
+            "name": "wexample/symfony-geo",
+            "version": "5.0.1",
+            "dist": {
+                "type": "path",
+                "url": "../symfony-geo",
+                "reference": "dd9a0db20fa2e1b6b49dfb53a8f7a17eb69946c1"
+            },
+            "require": {
+                "php": ">=8.5",
+                "rinvex/countries": "^8.0",
+                "symfony/intl": "^7.4 || ^8.0",
+                "wexample/symfony-api": ">=12.0.0",
+                "wexample/symfony-helpers": ">=15.0.0",
+                "wexample/symfony-money": ">=5.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^13"
+            },
+            "type": "library",
+            "extra": {
+                "install": {
+                    "bundle_env": "all"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Wexample\\SymfonyGeo\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Wexample\\SymfonyGeo\\Tests\\": "tests/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "weeger",
+                    "email": "romain.weeger@wexample.com"
+                }
+            ],
+            "description": "Geo helpers for Symfony",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
             "name": "wexample/symfony-helpers",
             "version": "15.0.2",
             "dist": {
                 "type": "path",
                 "url": "../symfony-helpers",
-                "reference": "07911dcf8d6ac537de2c56a39eb49ebbe17889fb"
+                "reference": "d3fe9b8c164cf0247cefe3fd1ba7bf8bcd9cf400"
             },
             "require": {
                 "doctrine/common": "^3.4",
@@ -8789,7 +9164,7 @@
             "dist": {
                 "type": "path",
                 "url": "../symfony-loader",
-                "reference": "3791897fc04709f30b97ae00b7776ae9a92a4518"
+                "reference": "b30cf6921c36d3085412ea0472c242be3d9358da"
             },
             "require": {
                 "fortawesome/font-awesome": "^6.7",
@@ -8843,16 +9218,70 @@
             }
         },
         {
+            "name": "wexample/symfony-media",
+            "version": "1.0.1",
+            "dist": {
+                "type": "path",
+                "url": "../symfony-media",
+                "reference": "b5c9c1465ef885a3228fc71c040057fe506cbed1"
+            },
+            "require": {
+                "ext-gd": "*",
+                "php": ">=8.5",
+                "symfony/mime": "^7.4 || ^8.0",
+                "symfony/security-bundle": "^7.4 || ^8.0",
+                "wexample/php-pseudocode": ">=2.2.0",
+                "wexample/symfony-api": ">=11.0.0",
+                "wexample/symfony-helpers": ">=15.0.0",
+                "wexample/symfony-pseudocode": ">=3.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^13",
+                "wexample/symfony-testing": ">=2.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "install": {
+                    "bundle_env": "all"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Wexample\\SymfonyMedia\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Wexample\\SymfonyMedia\\Tests\\": "tests/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "weeger",
+                    "email": "romain.weeger@wexample.com"
+                }
+            ],
+            "description": "A media library: files kept for themselves, in folders, served behind an access check, with thumbnails; entities point at them with plain relations",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
             "name": "wexample/symfony-money",
             "version": "5.0.7",
             "dist": {
                 "type": "path",
                 "url": "../symfony-money",
-                "reference": "d157eece0112cca5a9380588af64bf6d9d26ee2b"
+                "reference": "cc09b5be96eb47c26697e0e6b51066f066da6993"
             },
             "require": {
                 "php": ">=8.5",
                 "symfony/intl": ">=6.2",
+                "symfony/translation-contracts": ">=3.0",
                 "wexample/php-pseudocode": ">=2.2.0",
                 "wexample/symfony-api": ">=12.0.0",
                 "wexample/symfony-forms": ">=11.0.0",
@@ -8860,7 +9289,9 @@
                 "wexample/symfony-pseudocode": ">=3.0.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^13"
+                "phpunit/phpunit": "^13",
+                "symfony/translation": ">=7.0",
+                "symfony/yaml": ">=7.0"
             },
             "type": "library",
             "extra": {
@@ -8899,7 +9330,7 @@
             "dist": {
                 "type": "path",
                 "url": "../symfony-pseudocode",
-                "reference": "02e1935b32564b3076a9c038b5b2a73b78816380"
+                "reference": "d31a8b5871a540b595780a565d776394493698d8"
             },
             "require": {
                 "php": ">=8.5",
@@ -8944,7 +9375,7 @@
             "dist": {
                 "type": "path",
                 "url": "../symfony-remote",
-                "reference": "f49ef4a4902a5f44e1dbfb322d679c4fe05964df"
+                "reference": "212572da8ebf38382b92dbab0c585a4d7d5cbce6"
             },
             "require": {
                 "php": ">=8.5",
@@ -8994,7 +9425,7 @@
             "dist": {
                 "type": "path",
                 "url": "../symfony-remote-payment",
-                "reference": "9b50397ea431a9137a9a95f000061197f5e34120"
+                "reference": "883090563835b3285dbab80f1b9d902a47a07617"
             },
             "require": {
                 "php": ">=8.5",
@@ -9041,7 +9472,7 @@
             "dist": {
                 "type": "path",
                 "url": "../symfony-routing",
-                "reference": "5353bbbe9b1e78f28d1d4aac6268f8969ecda2fc"
+                "reference": "18e653bd0e9729f796d47f1cbd8f74bee52a3261"
             },
             "require": {
                 "php": ">=8.5",
@@ -9080,7 +9511,7 @@
             "dist": {
                 "type": "path",
                 "url": "../symfony-security",
-                "reference": "cc78a6df8ea9128facca53cf7182d1e8a3ffa9ca"
+                "reference": "4f0b312e1f8ddb651fa0bf05278142f0a2ee2543"
             },
             "require": {
                 "monolog/monolog": "^3.5",
@@ -9139,7 +9570,7 @@
             "dist": {
                 "type": "path",
                 "url": "../symfony-template",
-                "reference": "3839a5e2a083e8d4ef008c53de60576395a13fe7"
+                "reference": "4677822439cbdcbb96cbc33c4946f29d7d568e1a"
             },
             "require": {
                 "ext-dom": "*",
@@ -9188,11 +9619,13 @@
             "dist": {
                 "type": "path",
                 "url": "../symfony-testing",
-                "reference": "3bacee960a8acb78c8ce2f21ff219718660cfd56"
+                "reference": "216d8bae6e0d2a73c61a3672974213d450091660"
             },
             "require": {
                 "php": ">=8.5",
                 "symfony/browser-kit": "^7.4 || ^8.0",
+                "symfony/css-selector": "^7.4 || ^8.0",
+                "symfony/dom-crawler": "^7.4 || ^8.0",
                 "symfony/property-access": "^7.4 || ^8.0",
                 "symfony/security-bundle": "^7.4 || ^8.0",
                 "symfony/yaml": "^7.4 || ^8.0",
@@ -9245,7 +9678,7 @@
             "dist": {
                 "type": "path",
                 "url": "../symfony-translations",
-                "reference": "7bf669f02de0966c526cd44a4d673b7299075653"
+                "reference": "07d740e5cbbbe4af5bc1f2a3500d3a1d2b4a3ead"
             },
             "require": {
                 "php": ">=8.5",

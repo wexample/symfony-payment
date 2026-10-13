@@ -17,3 +17,4 @@ services:
       - { name: kernel.event_listener, event: Wexample\SymfonyPayment\Event\PaymentFailedEvent, method: record }
       - { name: kernel.event_listener, event: Wexample\SymfonyPayment\Event\PaymentRefundedEvent, method: record }
       - { name: kernel.event_listener, event: Wexample\SymfonyPayment\Event\PaymentCanceledEvent, method: record }
+      - { name: kernel.event_listener, event: Wexample\SymfonyPayment\Event\PaymentProofAttachedEvent, method: record }

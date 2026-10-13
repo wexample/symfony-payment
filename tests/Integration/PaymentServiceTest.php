@@ -4,12 +4,16 @@ namespace Wexample\SymfonyPayment\Tests\Integration;
 
 use Wexample\SymfonyCheck\Class\Shutdown;
 use Wexample\SymfonyCheck\Service\CheckService;
+use Wexample\SymfonyMedia\Entity\Media;
+use Wexample\SymfonyMedia\Service\MediaStorage;
 use Wexample\SymfonyPayment\Checker\ShutdownPaymentChecker;
 use Wexample\SymfonyPayment\Enum\PaymentStatus;
 use Wexample\SymfonyPayment\Event\PaymentFailedEvent;
+use Wexample\SymfonyPayment\Event\PaymentProofAttachedEvent;
 use Wexample\SymfonyPayment\Event\PaymentRefundedEvent;
 use Wexample\SymfonyPayment\Event\PaymentSucceededEvent;
 use Wexample\SymfonyPayment\Exception\PaymentTransitionException;
+use Wexample\SymfonyPayment\Repository\PaymentEventRepository;
 use Wexample\SymfonyPayment\Repository\PaymentRepository;
 use Wexample\SymfonyPayment\Service\PayableRegistry;
 use Wexample\SymfonyPayment\Tests\Fixtures\Payable\TestOrder;
@@ -107,6 +111,55 @@ class PaymentServiceTest extends AbstractPaymentTestCase
         $this->assertSame(PaymentStatus::Succeeded, $payment->getStatus());
         $this->assertSame('2026-03-01', $payment->getDatePaid()->format('Y-m-d'));
         $this->assertSame('VIR 123', $payment->getProviderChargeReference());
+    }
+
+    public function testWhatTheProviderSaidIsKept(): void
+    {
+        $service = $this->getPaymentService();
+        $payment = $service->create(2500, 'EUR', 'card');
+        $service->initiate($payment);
+
+        $notification = $this->getProvider()->succeed($payment->getProviderReference());
+        $service->handleNotification($notification);
+        $service->handleNotification($notification);
+
+        $events = static::getContainer()->get(PaymentEventRepository::class)->findForPayment($payment);
+        $this->assertCount(2, $events, 'A replay is kept too: the trail shows what the provider sent.');
+        $this->assertSame('fake', $events[0]->getProvider());
+        $this->assertSame('succeeded', $events[0]->getType());
+        $this->assertSame($notification->eventId, $events[0]->getEventId());
+    }
+
+    public function testAProofWaitsForTheMoney(): void
+    {
+        $service = $this->getPaymentService();
+        $payment = $service->create(5000, 'EUR', 'transfer');
+        $service->attachProof($payment, $this->importProof());
+
+        $this->assertSame('manual', $payment->getProvider());
+        $this->assertSame(PaymentStatus::Pending, $payment->getStatus());
+        $this->assertTrue($payment->getProof()->isRestricted());
+        $this->assertSame(1, $this->getEvents()->count(PaymentProofAttachedEvent::class));
+
+        $service->confirmManualPayment($payment);
+        $this->assertSame(PaymentStatus::Succeeded, $payment->getStatus());
+    }
+
+    public function testOnlyAManualPaymentTakesAProof(): void
+    {
+        $service = $this->getPaymentService();
+        $payment = $service->create(5000, 'EUR', 'card');
+
+        $this->expectException(\LogicException::class);
+        $service->attachProof($payment, $this->importProof());
+    }
+
+    private function importProof(): Media
+    {
+        $file = tempnam(sys_get_temp_dir(), 'proof');
+        file_put_contents($file, 'Transfer of 50.00 EUR');
+
+        return static::getContainer()->get(MediaStorage::class)->import($file, 'receipt.txt');
     }
 
     public function testRefunds(): void

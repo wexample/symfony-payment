@@ -9,6 +9,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Wexample\Pseudocode\Attribute\PseudocodeExport;
 use Wexample\SymfonyHelpers\Entity\AbstractEntity;
+use Wexample\SymfonyMedia\Entity\Media;
 use Wexample\SymfonyMoney\Entity\Traits\HasPriceCurrencyTrait;
 use Wexample\SymfonyPayment\Enum\PaymentStatus;
 use Wexample\SymfonyPayment\Repository\PaymentRepository;
@@ -83,6 +84,11 @@ class Payment extends AbstractEntity
 
     #[ORM\Column(type: Types::JSON)]
     protected array $metadata = [];
+
+    /** What the payer sent to show a manual payment was made: a transfer receipt, a scan. Restricted. */
+    #[ORM\ManyToOne(targetEntity: Media::class)]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
+    protected ?Media $proof = null;
 
     /** @var Collection<int, PaymentRefund> */
     #[ORM\OneToMany(targetEntity: PaymentRefund::class, mappedBy: 'payment', cascade: ['persist'])]
@@ -310,6 +316,18 @@ class Payment extends AbstractEntity
     public function setMetadata(array $metadata): static
     {
         $this->metadata = $metadata;
+
+        return $this;
+    }
+
+    public function getProof(): ?Media
+    {
+        return $this->proof;
+    }
+
+    public function setProof(?Media $proof): static
+    {
+        $this->proof = $proof;
 
         return $this;
     }

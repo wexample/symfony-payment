@@ -5,12 +5,15 @@ namespace Wexample\SymfonyPayment\Service;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
+use Wexample\SymfonyMedia\Entity\Media;
 use Wexample\SymfonyPayment\Class\ManualPaymentGateway;
 use Wexample\SymfonyPayment\Entity\Payment;
+use Wexample\SymfonyPayment\Entity\PaymentEvent;
 use Wexample\SymfonyPayment\Entity\PaymentRefund;
 use Wexample\SymfonyPayment\Enum\PaymentStatus;
 use Wexample\SymfonyPayment\Event\PaymentCanceledEvent;
 use Wexample\SymfonyPayment\Event\PaymentFailedEvent;
+use Wexample\SymfonyPayment\Event\PaymentProofAttachedEvent;
 use Wexample\SymfonyPayment\Event\PaymentRefundedEvent;
 use Wexample\SymfonyPayment\Event\PaymentStatusChangedEvent;
 use Wexample\SymfonyPayment\Event\PaymentSucceededEvent;
@@ -159,6 +162,13 @@ class PaymentService
             return null;
         }
 
+        $this->entityManager->persist((new PaymentEvent())
+            ->setPayment($payment)
+            ->setProvider($notification->provider)
+            ->setEventId($notification->eventId)
+            ->setType($notification->status->value)
+            ->setData($notification->data));
+
         if ($notification->chargeReference) {
             $payment->setProviderChargeReference($notification->chargeReference);
         }
@@ -168,6 +178,8 @@ class PaymentService
             PaymentStatus::fromProvider($notification->status),
             $notification->failureMessage
         );
+        // A replay changes no status, yet its event is kept.
+        $this->entityManager->flush();
 
         return $payment;
     }
@@ -291,6 +303,30 @@ class PaymentService
         }
 
         return $this->markSucceeded($payment, $datePaid);
+    }
+
+    /**
+     * The payer of a manual payment sends what shows they paid: a transfer receipt,
+     * a scan. The media becomes restricted, readable through grants only; the payment
+     * stays pending until confirmManualPayment().
+     */
+    public function attachProof(
+        Payment $payment,
+        Media $proof
+    ): void {
+        if (PaymentStatus::Created === $payment->getStatus()) {
+            $this->initiate($payment);
+        }
+
+        if (ManualPaymentGateway::NAME !== $payment->getProvider() || PaymentStatus::Pending !== $payment->getStatus()) {
+            throw new \LogicException('Only a pending manual payment takes a proof.');
+        }
+
+        $proof->setRestricted(true);
+        $payment->setProof($proof);
+        $this->entityManager->flush();
+
+        $this->eventDispatcher->dispatch(new PaymentProofAttachedEvent($payment));
     }
 
     /**
