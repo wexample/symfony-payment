@@ -1,6 +1,6 @@
 # symfony-payment
 
-Version: 3.0.1
+Version: 4.0.0
 
 ## Paying
 
@@ -16,13 +16,36 @@ Routes (import `src/Resources/config/routes.yaml`):
 
 `confirmManualPayment()` records a received transfer or cash payment; `refund()` refunds through the provider, `recordRefund()` records one made elsewhere. While payments may still be confirmed by a provider, `bin/console check:run shutdown` (symfony-check) fails, so whoever stops the application — a release, a maintenance — can wait for them.
 
+## Manual payments and their proof
+
+A transfer, a cheque or cash goes through the `manual` gateway: the payment stays pending until someone confirms the money arrived. Meanwhile the payer may send what shows they paid:
+
+```php
+$proof = $mediaStorage->import($uploadedPath, 'receipt.pdf');   // symfony-media
+$paymentService->attachProof($payment, $proof);                  // restricted, PaymentProofAttachedEvent
+$paymentService->confirmManualPayment($payment, $dateReceived, 'VIR 123');
+```
+
+The proof is a `Media` of the library, restricted: read through grants only. Only a pending manual payment takes one.
+
+## What providers said
+
+Every verified notification is kept as a `PaymentEvent` — provider, event id, reported status and the raw data — replays included. It is the trail to read when a status is disputed; the status itself is only changed by `PaymentService`.
+
+## Buyers
+
+A payable that knows who pays it implements `BuyerIdentifiedInterface`: name, company, email, phone, VAT number and billing address, as given at checkout. Nothing here reads it; a package invoicing payables (symfony-accounting) does, without knowing the payable's own class.
+
 ## Events
 
-`PaymentStatusChangedEvent` on every change, then `PaymentSucceededEvent` (exactly once), `PaymentFailedEvent`, `PaymentCanceledEvent`, `PaymentRefundedEvent`. A package owning payables provides a `PayableResolverInterface` so listeners get the payable back.
+`PaymentStatusChangedEvent` on every change, then `PaymentSucceededEvent` (exactly once), `PaymentFailedEvent`, `PaymentCanceledEvent`, `PaymentRefundedEvent`; `PaymentProofAttachedEvent` when a proof arrives, the status unchanged. A package owning payables provides a `PayableResolverInterface` so listeners get the payable back.
 
 ## Table of Contents
 
 - [Paying](#paying)
+- [Manual payments and their proof](#manual-payments-and-their-proof)
+- [What providers said](#what-providers-said)
+- [Buyers](#buyers)
 - [Events](#events)
 - [Architecture](#architecture)
 - [Integration in the Suite](#integration-in-the-suite)
@@ -51,10 +74,15 @@ Visit the [Wexample Suite documentation](https://docs.wexample.com) for the comp
 ## Dependencies
 
 - php: >=8.5
-- wexample/symfony-check: >=3.0.0
-- wexample/symfony-helpers: >=15.0.0
-- wexample/symfony-money: >=5.0.0
-- wexample/symfony-remote-payment: >=2.0.0
+- wexample/symfony-check: >=4.0.0
+- wexample/symfony-helpers: >=16.0.0
+- wexample/symfony-money: >=6.0.0
+- wexample/symfony-remote-payment: >=3.0.0
+- wexample/symfony-api: >=13.0.0
+- wexample/php-pseudocode: >=2.2.0
+- wexample/symfony-pseudocode: >=3.0.0
+- wexample/symfony-geo: >=6.0.0
+- wexample/symfony-media: >=2.0.0
 
 ## Versioning & Compatibility Policy
 
