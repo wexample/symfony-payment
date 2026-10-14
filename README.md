@@ -1,6 +1,6 @@
 # symfony-payment
 
-Version: 4.0.1
+Version: 4.0.2
 
 ## Paying
 
@@ -76,12 +76,12 @@ Visit the [Wexample Suite documentation](https://docs.wexample.com) for the comp
 - php: >=8.5
 - wexample/symfony-check: >=4.0.0
 - wexample/symfony-helpers: >=16.0.0
-- wexample/symfony-money: >=6.0.0
+- wexample/symfony-money: >=7.0.0
 - wexample/symfony-remote-payment: >=3.0.0
 - wexample/symfony-api: >=13.0.0
 - wexample/php-pseudocode: >=2.2.0
 - wexample/symfony-pseudocode: >=3.0.0
-- wexample/symfony-geo: >=6.0.0
+- wexample/symfony-geo: >=7.0.0
 - wexample/symfony-media: >=2.0.0
 
 ## Versioning & Compatibility Policy
