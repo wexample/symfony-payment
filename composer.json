@@ -3,7 +3,7 @@
   "description": "Payments for Symfony: a guarded status machine, provider-agnostic collection, webhooks and events",
   "type": "library",
   "license": "MIT",
-  "version": "4.0.3",
+  "version": "4.0.4",
   "autoload": {
     "psr-4": {
       "Wexample\\SymfonyPayment\\": "src/"
@@ -29,8 +29,8 @@
     "wexample/symfony-api": ">=14.0.0",
     "wexample/php-pseudocode": ">=2.2.0",
     "wexample/symfony-pseudocode": ">=4.0.0",
-    "wexample/symfony-geo": ">=7.0.0",
-    "wexample/symfony-media": ">=3.0.0"
+    "wexample/symfony-geo": ">=8.0.0",
+    "wexample/symfony-media": ">=4.0.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^13",
