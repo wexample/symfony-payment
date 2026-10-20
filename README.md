@@ -1,6 +1,6 @@
 # symfony-payment
 
-Version: 4.0.4
+Version: 4.0.5
 
 ## Paying
 
@@ -73,14 +73,14 @@ The suite includes packages for configuration management, file handling, prompts
 
 - php: >=8.5
 - wexample/symfony-check: >=4.0.0
-- wexample/symfony-helpers: >=17.0.0
+- wexample/symfony-helpers: >=18.0.0
 - wexample/symfony-money: >=7.0.0
 - wexample/symfony-remote-payment: >=3.0.0
 - wexample/symfony-api: >=14.0.0
 - wexample/php-pseudocode: >=2.2.0
 - wexample/symfony-pseudocode: >=4.0.0
 - wexample/symfony-geo: >=8.0.0
-- wexample/symfony-media: >=4.0.0
+- wexample/symfony-media: >=5.0.0
 
 ## Versioning & Compatibility Policy
 
