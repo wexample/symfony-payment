@@ -3,7 +3,7 @@
   "description": "Payments for Symfony: a guarded status machine, provider-agnostic collection, webhooks and events",
   "type": "library",
   "license": "MIT",
-  "version": "4.0.5",
+  "version": "4.0.6",
   "autoload": {
     "psr-4": {
       "Wexample\\SymfonyPayment\\": "src/"
@@ -22,15 +22,15 @@
   ],
   "require": {
     "php": ">=8.5",
-    "wexample/symfony-check": ">=4.0.0",
-    "wexample/symfony-helpers": ">=18.0.0",
-    "wexample/symfony-money": ">=7.0.0",
-    "wexample/symfony-remote-payment": ">=3.0.0",
-    "wexample/symfony-api": ">=14.0.0",
-    "wexample/php-pseudocode": ">=2.2.0",
-    "wexample/symfony-pseudocode": ">=4.0.0",
-    "wexample/symfony-geo": ">=8.0.0",
-    "wexample/symfony-media": ">=5.0.0"
+    "wexample/symfony-check": ">=4.0.4",
+    "wexample/symfony-helpers": ">=18.0.2",
+    "wexample/symfony-money": ">=7.0.4",
+    "wexample/symfony-remote-payment": ">=3.0.4",
+    "wexample/symfony-api": ">=14.0.5",
+    "wexample/php-pseudocode": ">=2.2.4",
+    "wexample/symfony-pseudocode": ">=4.0.2",
+    "wexample/symfony-geo": ">=8.0.2",
+    "wexample/symfony-media": ">=5.0.1"
   },
   "require-dev": {
     "phpunit/phpunit": "^13",
