@@ -20,7 +20,7 @@ use Wexample\SymfonyPayment\Service\PaymentAccessService;
  * The refunds of one payment, oldest first: for its payer, or for whoever
  * holds the administration role. Anyone else is told it does not exist.
  */
-#[Route(path: 'api/payment-refund/', name: 'api_payment_refund_')]
+#[Route(path: '_api/payment-refund/', name: 'api_payment_refund_')]
 class PaymentRefundController extends AbstractApiController
 {
     final public const string ROUTE_LIST = 'list';

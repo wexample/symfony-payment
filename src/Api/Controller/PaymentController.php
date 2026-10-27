@@ -26,7 +26,7 @@ use Wexample\SymfonyPayment\Service\PaymentAccessService;
  * holds the administration role — everybody's, narrowed by status (several,
  * comma separated), provider, and words.
  */
-#[Route(path: 'api/payment/', name: 'api_payment_')]
+#[Route(path: '_api/payment/', name: 'api_payment_')]
 class PaymentController extends AbstractApiController
 {
     final public const string ROUTE_LIST = 'list';
