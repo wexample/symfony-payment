@@ -1,6 +1,6 @@
 # symfony-payment
 
-Version: 4.0.6
+Version: 4.0.7
 
 Payments for Symfony: a guarded status machine, provider-agnostic collection, webhooks and events
 
