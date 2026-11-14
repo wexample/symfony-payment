@@ -53,10 +53,8 @@ class PaymentController
             return new Response('', Response::HTTP_NOT_FOUND);
         }
 
-        $headers = [];
-        foreach ($request->headers->all() as $name => $values) {
-            $headers[strtolower($name)] = (string) ($values[0] ?? '');
-        }
+        // The bag keeps its names lowercase already: the first value of each.
+        $headers = array_map(static fn (array $values): string => (string) ($values[0] ?? ''), $request->headers->all());
 
         try {
             $notification = $this->providerRegistry
