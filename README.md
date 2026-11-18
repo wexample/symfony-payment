@@ -1,6 +1,6 @@
 # symfony-payment
 
-Version: 7.0.0
+Version: 7.0.1
 
 Payments for Symfony: a guarded status machine, provider-agnostic collection, webhooks and events
 
