@@ -2,6 +2,7 @@
 
 namespace Wexample\SymfonyPayment\Api\Controller;
 
+use Wexample\SymfonyApi\Api\Attribute\ApiAccess;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -27,6 +28,7 @@ use Wexample\SymfonyPayment\Service\PaymentAccessService;
  * comma separated), provider, and words.
  */
 #[Route(path: '_api/payment/', name: 'api_payment_')]
+#[ApiAccess(ApiAccess::CONTROLLER, "a signed-in account: its own payments, every payment for the administration role")]
 class PaymentController extends AbstractApiController
 {
     final public const string ROUTE_LIST = 'list';

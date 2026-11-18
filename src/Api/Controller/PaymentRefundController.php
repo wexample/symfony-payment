@@ -2,6 +2,7 @@
 
 namespace Wexample\SymfonyPayment\Api\Controller;
 
+use Wexample\SymfonyApi\Api\Attribute\ApiAccess;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -21,6 +22,7 @@ use Wexample\SymfonyPayment\Service\PaymentAccessService;
  * holds the administration role. Anyone else is told it does not exist.
  */
 #[Route(path: '_api/payment-refund/', name: 'api_payment_refund_')]
+#[ApiAccess(ApiAccess::CONTROLLER, "a signed-in account: the refunds of its own payments, every one for the administration role")]
 class PaymentRefundController extends AbstractApiController
 {
     final public const string ROUTE_LIST = 'list';
